@@ -271,6 +271,16 @@ Stuff = {
         }
       });
       
+      object.at = function(index) {
+        object.stuffWasRead();
+        return object._items[index];
+      }
+      
+      object.add = function(index, value) {
+        object.stuffWasWritten();
+        object._items[index] = value;
+      }
+      
       return object;
     }
   }
