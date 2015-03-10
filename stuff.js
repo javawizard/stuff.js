@@ -29,6 +29,15 @@
 // which I'm pretty sure it doesn't, unless we say that that logic applies when
 // we're asked to re-render from _any_ render, not just a render of the current
 // component. Then I think it might work.
+//
+// Thought a bit more about these issues and I think I've decided the following:
+// 1: I'm not going to worry about this for now - such ephemeral objects will
+// only be held onto until either the next time we re-render or we're unmounted,
+// whichever happens first, and I think that'll result in a sufficiently small
+// amount of garbage as to be acceptable for a first pass.
+// 2: We just don't render a second time (and we explicitly state that fact in
+// our documentation). We helpfully suggest that users schedule modifications (or
+// a forceUpdate) to happen in a requestAnimationFrame call if necessary.
 
 Stuff = {
   _currentRendering: null,
